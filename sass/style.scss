@@ -5,7 +5,36 @@ body {
 }
 
 // Navigation
-#menu-primary {
-	width: 100%;
-	justify-content: space-evenly;
+header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	#menu-primary {
+		width: 100%;
+		justify-content: space-evenly;
+	}
+}
+
+// Hero
+#hero {
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	.title-container {
+		h1 {
+			text-align: center;
+			color: white;
+		}
+		form {
+			input {
+				float: right;
+			}
+			input.button {
+				width: 100%;
+				display: block;
+			}
+		}
+	}
 }

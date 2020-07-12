@@ -2,9 +2,33 @@ body {
   background-color: black;
 }
 
-#menu-primary {
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+header #menu-primary {
   width: 100%;
   justify-content: space-evenly;
+}
+
+#hero {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#hero .title-container h1 {
+  text-align: center;
+  color: white;
+}
+#hero .title-container form input {
+  float: right;
+}
+#hero .title-container form input.button {
+  width: 100%;
+  display: block;
 }
 
 /*# sourceMappingURL=style.css.map */
