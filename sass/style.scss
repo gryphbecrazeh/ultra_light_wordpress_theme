@@ -93,10 +93,21 @@ h3 {
 	background-size: cover;
 	background-blend-mode: hard-light;
 	position: relative;
-	z-index: -1;
 	.github-container {
+		border-radius: 5px;
 		min-height: 80vh;
+		max-height: 80vh;
 		background-color: rgba(20, 20, 20, 0.7);
+		overflow: hidden;
+		.gh_repos_list {
+			max-height: 100%;
+			list-style: none;
+			text-indent: none;
+			overflow: auto;
+			a {
+				color: $primary;
+			}
+		}
 	}
 	.title-container {
 		margin-bottom: auto;

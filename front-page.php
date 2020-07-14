@@ -22,6 +22,7 @@ $projects_desc = get_field('projects_description');
 $featured_project_1 = get_field('featured_project_1');
 $featured_project_2 = get_field('featured_project_2');
 $hero_background_image = get_field('hero_background_image');
+$github_feed = get_field('github_feed');
 
 ?>
 
@@ -29,7 +30,8 @@ $hero_background_image = get_field('hero_background_image');
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-3 github-container">
-                GITHUB OUTPUT
+                <div class="title">Recent GitHub Activity</div>
+                <?php do_shortcode('[display_gh_repos user="gryphbecrazeh"]') ?>
             </div>
             <div class="col-md-6 title-container">
                 <h1><?php the_title(); ?></h1>

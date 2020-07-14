@@ -87,11 +87,22 @@ h3 {
   background-size: cover;
   background-blend-mode: hard-light;
   position: relative;
-  z-index: -1;
 }
 #hero .github-container {
+  border-radius: 5px;
   min-height: 80vh;
+  max-height: 80vh;
   background-color: rgba(20, 20, 20, 0.7);
+  overflow: hidden;
+}
+#hero .github-container .gh_repos_list {
+  max-height: 100%;
+  list-style: none;
+  text-indent: none;
+  overflow: auto;
+}
+#hero .github-container .gh_repos_list a {
+  color: orange;
 }
 #hero .title-container {
   margin-bottom: auto;
