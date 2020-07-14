@@ -1,5 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=Nova+Square&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.css";
+.oswald {
+  font-family: "Oswald", sans-serif;
+}
+
+.quickSand {
+  font-family: "Quicksand", sans-serif;
+}
+
+.vibes {
+  font-family: "Vibes", cursive;
+}
+
+.shadows {
+  font-family: "Shadows Into Light", cursive;
+}
+
+.elite {
+  font-family: "Special Elite", cursive;
+}
+
+.bangers {
+  font-family: "Bangers", cursive;
+}
+
 body {
+  background-image: url(https://cordine.site/wp-content/uploads/2020/06/orange-hexagon-pattern-1.jpg);
   background-color: black;
+  color: white;
+  margin-bottom: 10em;
+  background-attachment: fixed;
 }
 
 header {
@@ -7,10 +38,42 @@ header {
   top: 0;
   left: 0;
   right: 0;
+  z-index: 9999;
 }
 header #menu-primary {
   width: 100%;
-  justify-content: space-evenly;
+  justify-content: flex-end;
+}
+
+section {
+  padding-top: 3em;
+  padding-bottom: 3em;
+  padding-left: 1em;
+  padding-right: 1em;
+  font-family: "Special Elite";
+  letter-spacing: 2px;
+  line-height: 2;
+  box-shadow: 10px 0 10px black;
+}
+section p {
+  text-indent: 2em;
+}
+
+h1,
+h3 {
+  font-family: "Quicksand";
+  text-align: center;
+}
+
+.inverse {
+  color: black !important;
+}
+.inverse .heading-hilight {
+  color: #fff;
+}
+
+.heading-hilight {
+  color: orange;
 }
 
 #hero {
@@ -18,17 +81,249 @@ header #menu-primary {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-attachment: fixed;
+  background-position: center;
+  background-color: #222;
+  background-size: cover;
+  background-blend-mode: hard-light;
+  position: relative;
+  z-index: -1;
+}
+#hero .github-container {
+  min-height: 80vh;
+  background-color: rgba(20, 20, 20, 0.7);
+}
+#hero .title-container {
+  margin-bottom: auto;
+  margin-top: auto;
+  text-shadow: 0 0 5px black;
 }
 #hero .title-container h1 {
   text-align: center;
   color: white;
 }
-#hero .title-container form input {
-  float: right;
+#hero .title-container p {
+  text-align: center;
 }
-#hero .title-container form input.button {
+#hero .title-container p .tech {
+  color: white !important;
+  font-family: "Oswald";
+  transition: color 250ms ease-in-out;
+}
+#hero .title-container p .tech:hover,
+#hero .title-container p .tech.hilight {
+  color: orange !important;
+}
+
+#introduction {
+  position: relative;
+  background-color: black;
+  margin-bottom: 5em;
+}
+#introduction img {
+  display: none;
+}
+
+#projects {
+  background-color: #222;
+  padding: 0;
+}
+
+#split-screen-wrapper {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+#split-screen-wrapper .title {
+  font-family: "Nova Square", cursive;
+  font-size: 3em;
+  font-weight: bolder;
+  color: orange;
+  position: relative;
+}
+#split-screen-wrapper .underline {
+  height: 5px;
+  width: 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transition: width 250ms ease-in-out;
+  transition-delay: 250ms;
+}
+#split-screen-wrapper .layer {
+  position: absolute;
+  width: 100vw;
+  height: 100%;
+  overflow: hidden;
+  transition: all 250ms ease-in-out;
+}
+#split-screen-wrapper .layer .content-wrap {
+  position: absolute;
+  width: 100vw;
+  height: 100%;
+}
+#split-screen-wrapper .layer .content-wrap .content-body {
+  flex-direction: column;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+  transition: opacity 250ms ease-in-out;
+}
+#split-screen-wrapper .layer .content-wrap .content-body .heading {
+  text-align: center;
+  max-width: 60ch;
+  transition: all 200ms ease-in-out;
+}
+#split-screen-wrapper .layer .content-wrap .content-body .content {
+  overflow: hidden;
+  max-height: 0;
+  transition: all 200ms ease-in-out;
+}
+#split-screen-wrapper .skewed .top {
+  transform: skew(-130deg);
+  margin-left: -1000px;
+  width: calc(50vw + 1000px);
+}
+#split-screen-wrapper .skewed .top .content-wrap {
+  transform: skew(130deg);
+  margin-left: 1000px;
+  transition: all 250ms ease-in-out;
+}
+#split-screen-wrapper form {
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  max-width: 13vw;
+}
+#split-screen-wrapper form input {
+  border: none;
+  background-image: none;
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+#split-screen-wrapper form input,
+#split-screen-wrapper form .button {
+  padding: 0.5em;
+  margin: 0.5em;
   width: 100%;
-  display: block;
+  box-sizing: border-box;
+}
+#split-screen-wrapper form .button {
+  text-align: center;
+  border-radius: 5px;
+  border-width: 2px;
+  border-style: solid;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+#split-screen-wrapper form .button:hover {
+  cursor: pointer;
+}
+#split-screen-wrapper form .button.login {
+  border-color: orange;
+  color: orange;
+}
+#split-screen-wrapper .top {
+  z-index: 2;
+  background-color: orange;
+  width: 50vw;
+}
+#split-screen-wrapper .top .button {
+  border-color: #222;
+  color: #222;
+}
+#split-screen-wrapper .top input {
+  background-color: transparent;
+  color: #222;
+  border-radius: 5px;
+  border-color: #222;
+}
+#split-screen-wrapper .top .title {
+  text-align: left;
+  position: absolute;
+  top: 70vh;
+  left: 2em;
+  color: #222;
+  transform: rotate(30deg);
+}
+#split-screen-wrapper .top .title .underline {
+  background-color: #222;
+}
+#split-screen-wrapper .bottom {
+  background-color: #222;
+  z-index: 1;
+}
+#split-screen-wrapper .bottom input {
+  background-color: transparent;
+  color: orange;
+  border-radius: 5px;
+  border-color: orange;
+}
+#split-screen-wrapper .bottom .title {
+  color: orange;
+  text-align: right;
+  position: absolute;
+  top: 20vh;
+  right: 2em;
+  transform: rotate(30deg);
+}
+#split-screen-wrapper .bottom .title .underline {
+  background-color: orange;
+}
+#split-screen-wrapper .hilight-text {
+  color: #fff;
+  font-weight: 600;
+  animation-name: greet;
+  animation-duration: 500ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+  white-space: nowrap;
+}
+
+@keyframes greet {
+  from {
+    font-size: 1em;
+    transform: rotate(-2deg);
+  }
+  to {
+    font-size: 1.2em;
+    transform: rotate(2deg);
+  }
+}
+/* ANIMATIONS */
+@keyframes titleAnimation {
+  from {
+    background-position-y: -1000px;
+  }
+  to {
+    background-position-y: 1000px;
+  }
+}
+@keyframes growCircle {
+  from {
+    clip-path: circle(0% at 50% 50%);
+  }
+  to {
+    clip-path: circle(100% at 50% 50%);
+  }
+}
+@keyframes slideDown {
+  from {
+    margin-bottom: 1000px;
+  }
+  to {
+    margin-bottom: 0;
+  }
+}
+span.hi-light {
+  color: orange;
+  font-family: var(--font-elite);
+  text-transform: uppercase;
 }
 
 /*# sourceMappingURL=style.css.map */

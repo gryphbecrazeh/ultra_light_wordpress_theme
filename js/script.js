@@ -1,0 +1,85 @@
+let wrapper = document.querySelector("#split-screen-wrapper");
+let layers = [...wrapper.querySelectorAll(".layer")];
+let topLayer = wrapper.querySelector(".skewed .top");
+let forms = [...wrapper.querySelectorAll("form")];
+
+layers.forEach((layer, index) => {
+	// Identify which of the layers to manipulate
+	let next = index > 0 ? 0 : 1;
+
+	let contentBody = layers[next].querySelector(".content-body");
+	let heading = layer.querySelector(".heading");
+	let content = layer.querySelector(".content");
+	// let layerForm = layer.querySelector("form");
+	// let title = layer.querySelector(".title");
+	// let underline = title.querySelector(".underline");
+
+	layer.addEventListener("mouseenter", (e) => {
+		let top = [...e.target.classList].includes("top");
+		// underline.style.width = "100%";
+		// Make the opposite side's opacity 0
+		contentBody.style.opacity = 0;
+		// layerForm.style.opacity = 1;
+		content.style.maxHeight = "100000px";
+		if (top) {
+			// If the item selected is the top layer grow it
+			return (topLayer.style.width = "85vw");
+		}
+		// If the item selected is not the top layer shrink it
+
+		return (topLayer.style.width = "15vw ");
+	});
+
+	layer.addEventListener("mouseleave", () => {
+		// underline.style.width = "0";
+		topLayer.style.width = "50vw";
+		content.style.maxHeight = 0;
+
+		//     Set all layers' content-body to 100% opacity as a cover all solution to the mouse leaving
+		layers.forEach(() => {
+			contentBody.style.opacity = 1;
+		});
+		// forms.forEach((form) => {
+		// 	form.style.opacity = 0;
+		// });
+	});
+});
+
+// Hilight Links
+let delay = 1000;
+let hilight = (item) => {
+	item.classList.add("hilight");
+	setTimeout(() => item.classList.remove("hilight"), delay);
+};
+let techNodeArray = [...document.querySelectorAll(".tech")];
+
+let index = 0;
+let maxIndex = techNodeArray.length;
+
+let interval = setInterval(() => {
+	if (index > maxIndex) {
+		index = 0;
+	}
+	hilight(techNodeArray[`${index++}`]);
+}, delay);
+
+// Hilight text
+let htags = [
+	...document.querySelectorAll("h1"),
+	...document.querySelectorAll("h2"),
+	...document.querySelectorAll("h3"),
+	...document.querySelectorAll("h4"),
+	...document.querySelectorAll("h5"),
+	...document.querySelectorAll("h6"),
+];
+
+htags.forEach((item) => {
+	let words = item.innerText.match(/\w+/gim);
+	let res = words.map((word, index) => {
+		if (index >= words.length / 2) {
+			return `<span class='heading-hilight'>${word}</span>`;
+		}
+		return word;
+	});
+	item.innerHTML = res.join(" ");
+});
