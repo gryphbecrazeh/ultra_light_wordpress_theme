@@ -20,7 +20,6 @@ layers.forEach((layer, index) => {
 		// Make the opposite side's opacity 0
 		contentBody.style.opacity = 0;
 		// layerForm.style.opacity = 1;
-		content.style.maxHeight = "100000px";
 		if (top) {
 			// If the item selected is the top layer grow it
 			return (topLayer.style.width = "85vw");
@@ -33,7 +32,6 @@ layers.forEach((layer, index) => {
 	layer.addEventListener("mouseleave", () => {
 		// underline.style.width = "0";
 		topLayer.style.width = "50vw";
-		content.style.maxHeight = 0;
 
 		//     Set all layers' content-body to 100% opacity as a cover all solution to the mouse leaving
 		layers.forEach(() => {

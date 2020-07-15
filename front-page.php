@@ -29,9 +29,12 @@ $github_feed = get_field('github_feed');
 <section id="hero" style="background-image:url(<?php echo $hero_background_image ?>)">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-3 github-container">
-                <div class="title">Recent GitHub Activity</div>
-                <?php do_shortcode('[display_gh_repos user="gryphbecrazeh"]') ?>
+            <div class="col-md-3">
+                <div class="github-container">
+                    <div class="title">Recent GitHub Activity</div>
+                    <?php do_shortcode('[display_gh_repos user="gryphbecrazeh"]') ?>
+
+                </div>
             </div>
             <div class="col-md-6 title-container">
                 <h1><?php the_title(); ?></h1>

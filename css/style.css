@@ -29,7 +29,6 @@ body {
   background-image: url(https://cordine.site/wp-content/uploads/2020/06/orange-hexagon-pattern-1.jpg);
   background-color: black;
   color: white;
-  margin-bottom: 10em;
   background-attachment: fixed;
 }
 
@@ -40,9 +39,19 @@ header {
   right: 0;
   z-index: 9999;
 }
+header .navbrand svg {
+  height: 3em;
+}
 header #menu-primary {
   width: 100%;
   justify-content: flex-end;
+}
+
+footer {
+  min-height: 10em;
+  margin-top: 10em;
+  background-color: #222;
+  box-shadow: 10px 0 10px black;
 }
 
 section {
@@ -76,6 +85,36 @@ h3 {
   color: orange;
 }
 
+.github-container {
+  display: none;
+}
+
+@media all and (min-width: 1000px) {
+  .github-container {
+    display: block;
+    border-radius: 5px;
+    min-height: 80vh;
+    max-height: 80vh;
+    background-color: rgba(20, 20, 20, 0.7);
+    padding: 0.5em;
+    overflow: auto;
+    scrollbar-color: orange transparent !important;
+    scrollbar-width: thin;
+  }
+  .github-container .gh_repos_list {
+    max-height: 100%;
+    list-style: none;
+    text-indent: none;
+  }
+  .github-container .gh_repos_list a {
+    color: orange;
+  }
+  .github-container .gh_repos_list .gh_repos_item {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+}
 #hero {
   min-height: 100vh;
   display: flex;
@@ -87,22 +126,6 @@ h3 {
   background-size: cover;
   background-blend-mode: hard-light;
   position: relative;
-}
-#hero .github-container {
-  border-radius: 5px;
-  min-height: 80vh;
-  max-height: 80vh;
-  background-color: rgba(20, 20, 20, 0.7);
-  overflow: hidden;
-}
-#hero .github-container .gh_repos_list {
-  max-height: 100%;
-  list-style: none;
-  text-indent: none;
-  overflow: auto;
-}
-#hero .github-container .gh_repos_list a {
-  color: orange;
 }
 #hero .title-container {
   margin-bottom: auto;
@@ -133,6 +156,12 @@ h3 {
 }
 #introduction img {
   display: none;
+}
+#introduction p {
+  max-width: 80ch;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 #projects {
@@ -174,9 +203,10 @@ h3 {
   height: 100%;
 }
 #split-screen-wrapper .layer .content-wrap .content-body {
-  flex-direction: column;
+  flex-direction: column !important;
   height: 100%;
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   min-height: 100%;
@@ -335,6 +365,15 @@ span.hi-light {
   color: orange;
   font-family: var(--font-elite);
   text-transform: uppercase;
+}
+
+.layer:hover .content {
+  max-height: 100% !important;
+  max-width: 30%;
+}
+
+.bottom .content-body {
+  flex-direction: row-reverse !important;
 }
 
 /*# sourceMappingURL=style.css.map */

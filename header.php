@@ -23,6 +23,11 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse w-100" id='navbarSupportedContent'>
+                <div class="navbrand">
+                    <a href="/">
+                        <?php echo file_get_contents(__DIR__ . '/assets/chrisWebsiteLogo-W.svg') ?>
+                    </a>
+                </div>
                 <?php
                 wp_nav_menu(
                     array(

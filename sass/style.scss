@@ -33,7 +33,6 @@ body {
 	background-image: url(https://cordine.site/wp-content/uploads/2020/06/orange-hexagon-pattern-1.jpg);
 	background-color: $background;
 	color: white;
-	margin-bottom: 10em;
 	background-attachment: fixed;
 }
 
@@ -44,10 +43,23 @@ header {
 	left: 0;
 	right: 0;
 	z-index: 9999;
+	.navbrand {
+		svg {
+			height: 3em;
+		}
+	}
 	#menu-primary {
 		width: 100%;
 		justify-content: flex-end;
 	}
+}
+// Footer
+footer {
+	min-height: 10em;
+	margin-top: 10em;
+
+	background-color: $secondary;
+	box-shadow: 10px 0 10px black;
 }
 section {
 	padding-top: 3em;
@@ -81,6 +93,36 @@ h3 {
 	color: $primary;
 }
 
+.github-container {
+	display: none;
+}
+@media all and (min-width: 1000px) {
+	// GitHub Repo List
+	.github-container {
+		display: block;
+		border-radius: 5px;
+		min-height: 80vh;
+		max-height: 80vh;
+		background-color: rgba(20, 20, 20, 0.7);
+		padding: 0.5em;
+		overflow: auto;
+		scrollbar-color: $primary transparent !important;
+		scrollbar-width: thin;
+		.gh_repos_list {
+			max-height: 100%;
+			list-style: none;
+			text-indent: none;
+			a {
+				color: $primary;
+			}
+			.gh_repos_item {
+				text-overflow: ellipsis;
+				overflow: hidden;
+				white-space: nowrap;
+			}
+		}
+	}
+}
 // Hero
 #hero {
 	min-height: 100vh;
@@ -93,22 +135,6 @@ h3 {
 	background-size: cover;
 	background-blend-mode: hard-light;
 	position: relative;
-	.github-container {
-		border-radius: 5px;
-		min-height: 80vh;
-		max-height: 80vh;
-		background-color: rgba(20, 20, 20, 0.7);
-		overflow: hidden;
-		.gh_repos_list {
-			max-height: 100%;
-			list-style: none;
-			text-indent: none;
-			overflow: auto;
-			a {
-				color: $primary;
-			}
-		}
-	}
 	.title-container {
 		margin-bottom: auto;
 		margin-top: auto;
@@ -139,6 +165,12 @@ h3 {
 	margin-bottom: 5em;
 	img {
 		display: none;
+	}
+	p {
+		max-width: 80ch;
+		margin-left: auto;
+		margin-right: auto;
+		text-align: center;
 	}
 }
 
@@ -183,7 +215,7 @@ h3 {
 			height: 100%;
 
 			.content-body {
-				flex-direction: column;
+				flex-direction: column !important;
 				height: 100%;
 				.heading {
 					text-align: center;
@@ -195,7 +227,9 @@ h3 {
 					max-height: 0;
 					transition: all 200ms ease-in-out;
 				}
+
 				display: flex;
+				flex-direction: row;
 				justify-content: center;
 				align-items: center;
 				min-height: 100%;
@@ -356,4 +390,14 @@ span.hi-light {
 	color: $primary;
 	font-family: var(--font-elite);
 	text-transform: uppercase;
+}
+
+.layer:hover {
+	.content {
+		max-height: 100% !important;
+		max-width: 30%;
+	}
+}
+.bottom .content-body {
+	flex-direction: row-reverse !important;
 }
