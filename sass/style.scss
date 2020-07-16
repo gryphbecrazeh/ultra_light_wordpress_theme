@@ -3,16 +3,23 @@ Theme Name: Ultra Light Theme
 Author: Christopher Cordine
 
 */
+// Google Fonts
+@import url("https://fonts.googleapis.com/css2?family=Nova+Square&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
 
 $background: black;
 $primary: orange;
 // $primary: #cb6f34;
 $secondary: #222;
 $hilightColor: #fff;
+// Fonts
+$font-oswald: "Oswald", sans-serif;
+$font-quicksand: "Quicksand", sans-serif;
+$font-vibes: "Vibes", cursive;
+$font-shadows: "Shadows Into Light", cursive;
+$font-elite: "Special Elite", cursive;
+$font-bangers: "Bangers", cursive;
 
-// Google Fonts
-@import url("https://fonts.googleapis.com/css2?family=Nova+Square&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
 .oswald {
 	font-family: "Oswald", sans-serif;
 }
@@ -114,11 +121,13 @@ h3 {
 		border-radius: 5px;
 		min-height: 80vh;
 		max-height: 80vh;
-		background-color: rgba(20, 20, 20, 0.7);
+		background-color: rgba(0, 0, 0, 0.7);
 		padding: 0.5em;
+		padding-left: 1em;
 		overflow: auto;
 		scrollbar-color: $primary transparent !important;
 		scrollbar-width: thin;
+		box-shadow: 0 10px 10px black;
 		.gh_repos_list {
 			max-height: 100%;
 			list-style: none;
@@ -243,6 +252,18 @@ h3 {
 					max-height: 0;
 					transition: all 200ms ease-in-out;
 					transition-delay: 200ms;
+					.card {
+						h5 {
+							text-align: center;
+							font-family: $font-oswald;
+						}
+						strong {
+							font-family: $font-oswald;
+						}
+						.built-with {
+							float: right;
+						}
+					}
 				}
 			}
 		}
@@ -307,6 +328,9 @@ h3 {
 	}
 
 	.top {
+		.card {
+			background-color: $secondary;
+		}
 		.button {
 			border-color: $secondary;
 			color: $secondary;
@@ -337,7 +361,13 @@ h3 {
 	.bottom {
 		background-color: $secondary;
 		z-index: 1;
-
+		.card {
+			background-color: $primary;
+			color: $background;
+			.heading-hilight {
+				color: $secondary;
+			}
+		}
 		input {
 			background-color: transparent;
 			color: $primary;
@@ -368,6 +398,37 @@ h3 {
 		white-space: nowrap;
 	}
 }
+//
+// Post Styling
+//
+#post-title {
+	background-color: $primary;
+	.heading-hilight {
+		color: black;
+	}
+}
+#post-body {
+	background-color: $secondary;
+	.left {
+	}
+	.center {
+	}
+	.right {
+	}
+	.github-repo {
+		font-family: $font-oswald;
+		a {
+			color: $primary;
+		}
+	}
+	.technology-container {
+		font-family: $font-oswald;
+		ul {
+			list-style: circle;
+		}
+	}
+}
+
 @keyframes greet {
 	from {
 		font-size: 1em;

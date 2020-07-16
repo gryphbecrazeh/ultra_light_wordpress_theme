@@ -19,11 +19,10 @@ $introduction = get_field('introduction');
 $title_tags = get_field('title_tags');
 $projects_title = get_field('projects_title');
 $projects_desc = get_field('projects_description');
-$featured_project_1 = get_field('featured_project_1');
-$featured_project_2 = get_field('featured_project_2');
+$featured_project_1 = get_field('featured_project_1')->ID;
+$featured_project_2 = get_field('featured_project_2')->ID;
 $hero_background_image = get_field('hero_background_image');
 $github_feed = get_field('github_feed');
-
 ?>
 
 <section id="hero" style="background-image:url(<?php echo $hero_background_image ?>)">
@@ -82,7 +81,33 @@ endif;
                         <div class="inverse"><?php echo $projects_desc ?></div>
                     </div>
                     <div class="content">
-                        <?php echo $featured_project_1 ?>
+                        <?php
+                        $title = get_the_title($featured_project_1);
+                        $technologies = explode("\n", PHP_TOOLBOX::get_custom_field_values('technologies', $featured_project_1));
+                        $tagline = PHP_TOOLBOX::get_custom_field_values('tag_line', $featured_project_1);
+                        ?>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title"><?php echo $title; ?></h5>
+                                <p class="card-text">
+                                    <?php echo $tagline; ?>
+                                </p>
+                                <div class="card-text built-with">
+                                    <strong>Built With:</strong>
+                                    <ul class="technologies">
+                                        <?php
+                                        foreach ($technologies as $tech) {
+                                        ?>
+                                            <li class="tech"><?php echo $tech ?></li>
+                                        <?php
+                                        }
+                                        ?>
+                                    </ul>
+                                </div>
+
+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -96,7 +121,33 @@ endif;
                         <div><?php echo $projects_desc ?></div>
                     </div>
                     <div class="content">
-                        <?php echo $featured_project_1 ?>
+                        <?php
+                        $title = get_the_title($featured_project_2);
+                        $technologies = explode("\n", PHP_TOOLBOX::get_custom_field_values('technologies', $featured_project_2));
+                        $tagline = PHP_TOOLBOX::get_custom_field_values('tag_line', $featured_project_2);
+                        ?>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title"><?php echo $title; ?></h5>
+                                <p class="card-text">
+                                    <?php echo $tagline; ?>
+                                </p>
+                                <div class="card-text built-with">
+                                    <strong>Built With:</strong>
+                                    <ul class="technologies">
+                                        <?php
+                                        foreach ($technologies as $tech) {
+                                        ?>
+                                            <li class="tech"><?php echo $tech ?></li>
+                                        <?php
+                                        }
+                                        ?>
+                                    </ul>
+                                </div>
+
+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -107,11 +107,13 @@ h3 {
     border-radius: 5px;
     min-height: 80vh;
     max-height: 80vh;
-    background-color: rgba(20, 20, 20, 0.7);
+    background-color: rgba(0, 0, 0, 0.7);
     padding: 0.5em;
+    padding-left: 1em;
     overflow: auto;
     scrollbar-color: orange transparent !important;
     scrollbar-width: thin;
+    box-shadow: 0 10px 10px black;
   }
   .github-container .gh_repos_list {
     max-height: 100%;
@@ -234,6 +236,16 @@ h3 {
   transition: all 200ms ease-in-out;
   transition-delay: 200ms;
 }
+#split-screen-wrapper .layer .content-wrap .content-body .content .card h5 {
+  text-align: center;
+  font-family: "Oswald", sans-serif;
+}
+#split-screen-wrapper .layer .content-wrap .content-body .content .card strong {
+  font-family: "Oswald", sans-serif;
+}
+#split-screen-wrapper .layer .content-wrap .content-body .content .card .built-with {
+  float: right;
+}
 #split-screen-wrapper .layer:hover .content {
   max-height: 100% !important;
   transition-delay: 0ms;
@@ -289,6 +301,9 @@ h3 {
   background-color: orange;
   width: 50vw;
 }
+#split-screen-wrapper .top .card {
+  background-color: #222;
+}
 #split-screen-wrapper .top .button {
   border-color: #222;
   color: #222;
@@ -313,6 +328,13 @@ h3 {
 #split-screen-wrapper .bottom {
   background-color: #222;
   z-index: 1;
+}
+#split-screen-wrapper .bottom .card {
+  background-color: orange;
+  color: black;
+}
+#split-screen-wrapper .bottom .card .heading-hilight {
+  color: #222;
 }
 #split-screen-wrapper .bottom input {
   background-color: transparent;
@@ -340,6 +362,29 @@ h3 {
   animation-timing-function: ease-in-out;
   animation-direction: alternate;
   white-space: nowrap;
+}
+
+#post-title {
+  background-color: orange;
+}
+#post-title .heading-hilight {
+  color: black;
+}
+
+#post-body {
+  background-color: #222;
+}
+#post-body .github-repo {
+  font-family: "Oswald", sans-serif;
+}
+#post-body .github-repo a {
+  color: orange;
+}
+#post-body .technology-container {
+  font-family: "Oswald", sans-serif;
+}
+#post-body .technology-container ul {
+  list-style: circle;
 }
 
 @keyframes greet {
