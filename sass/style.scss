@@ -128,7 +128,12 @@ h3 {
 		scrollbar-color: $primary transparent !important;
 		scrollbar-width: thin;
 		box-shadow: 0 10px 10px black;
+		.title {
+			position: absolute;
+		}
 		.gh_repos_list {
+			padding-top: 1.5em;
+
 			max-height: 100%;
 			list-style: none;
 			text-indent: none;
