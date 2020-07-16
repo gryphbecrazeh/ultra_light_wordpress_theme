@@ -2,6 +2,13 @@
 include_once(__DIR__ . '/includes/register_assets.php');
 
 add_theme_support('post-thumbnails');
+add_theme_support('menus');
+
+register_nav_menus(array(
+    'top-menu' => 'Top Menu',
+    'bottom-menu' => 'Bottom Menu'
+));
+
 /**
  * Add bootstrap classes to individual menu list items
  */
