@@ -246,6 +246,9 @@ h3 {
 #split-screen-wrapper .layer .content-wrap .content-body .content .card .built-with {
   float: right;
 }
+#split-screen-wrapper .layer .content-wrap .content-body .content .card .tech {
+  max-width: 18ch;
+}
 #split-screen-wrapper .layer:hover .content {
   max-height: 100% !important;
   transition-delay: 0ms;
