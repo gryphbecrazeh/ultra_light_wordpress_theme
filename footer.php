@@ -5,7 +5,6 @@
             array(
                 'theme_location' => 'footer-menu',
                 'menu_class' => 'footer'
-
             )
         );
         ?>

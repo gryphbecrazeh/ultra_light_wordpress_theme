@@ -1,3 +1,8 @@
+/*
+Theme Name: Ultra Light Theme
+Author: Christopher Cordine
+
+*/
 @import url("https://fonts.googleapis.com/css2?family=Nova+Square&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
 @import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.css";
@@ -39,12 +44,19 @@ header {
   right: 0;
   z-index: 9999;
 }
+header .navbrand {
+  float: left;
+}
 header .navbrand svg {
   height: 3em;
+  opacity: 0.3;
+  transition: opacity 100ms ease-in-out;
 }
-header #menu-primary {
-  width: 100%;
-  justify-content: flex-end;
+header .navbrand svg:hover {
+  opacity: 1;
+}
+header #menu-primary-nav {
+  float: right;
 }
 
 footer {
@@ -206,7 +218,6 @@ h3 {
   flex-direction: column !important;
   height: 100%;
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
   min-height: 100%;
@@ -221,6 +232,11 @@ h3 {
   overflow: hidden;
   max-height: 0;
   transition: all 200ms ease-in-out;
+  transition-delay: 200ms;
+}
+#split-screen-wrapper .layer:hover .content {
+  max-height: 100% !important;
+  transition-delay: 0ms;
 }
 #split-screen-wrapper .skewed .top {
   transform: skew(-130deg);
@@ -365,15 +381,6 @@ span.hi-light {
   color: orange;
   font-family: var(--font-elite);
   text-transform: uppercase;
-}
-
-.layer:hover .content {
-  max-height: 100% !important;
-  max-width: 30%;
-}
-
-.bottom .content-body {
-  flex-direction: row-reverse !important;
 }
 
 /*# sourceMappingURL=style.css.map */

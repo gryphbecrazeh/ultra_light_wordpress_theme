@@ -22,7 +22,7 @@ $test_label = PHP_TOOLBOX::get_custom_field_values('test_label', $post_id);
 */
 ?>
 <?php get_header(); ?>
-<section class="title">
+<section class="post-title">
     <h1><?php the_title(); ?></h1>
 </section>
 <section class="custom_field">
