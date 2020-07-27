@@ -52,13 +52,8 @@ header .navbrand svg {
 header .navbrand svg:hover {
   opacity: 1;
 }
-@media all and (min-width: 992px) {
-  header .navbrand {
-    float: left;
-  }
-  header #menu-primary-nav {
-    float: right;
-  }
+header #menu-primary-nav {
+  margin-left: auto;
 }
 
 footer {

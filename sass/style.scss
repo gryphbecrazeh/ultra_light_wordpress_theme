@@ -48,7 +48,6 @@ body {
 	color: white;
 	background-attachment: fixed;
 }
-
 // Navigation
 header {
 	position: fixed;
@@ -66,14 +65,8 @@ header {
 			}
 		}
 	}
-
-	@media all and (min-width: 992px) {
-		.navbrand {
-			float: left;
-		}
-		#menu-primary-nav {
-			float: right;
-		}
+	#menu-primary-nav {
+		margin-left: auto;
 	}
 }
 // Footer
