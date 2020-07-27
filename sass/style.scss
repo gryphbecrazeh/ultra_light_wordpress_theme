@@ -112,37 +112,35 @@ h3 {
 .github-container {
 	display: none;
 }
-@media all and (min-width: 1000px) {
-	// GitHub Repo List
-	.github-container {
-		display: block;
-		border-radius: 5px;
-		min-height: 80vh;
-		max-height: 80vh;
-		background-color: rgba(0, 0, 0, 0.7);
-		padding: 0.5em;
-		padding-left: 1em;
-		overflow: auto;
-		scrollbar-color: $primary transparent !important;
-		scrollbar-width: thin;
-		box-shadow: 0 10px 10px black;
-		.title {
-			position: absolute;
-		}
-		.gh_repos_list {
-			padding-top: 1.5em;
+// GitHub Repo List
+.github-container {
+	display: block;
+	border-radius: 5px;
+	min-height: 80vh;
+	max-height: 80vh;
+	background-color: rgba(0, 0, 0, 0.7);
+	padding: 0.5em;
+	padding-left: 1em;
+	overflow: auto;
+	scrollbar-color: $primary transparent !important;
+	scrollbar-width: thin;
+	box-shadow: 0 10px 10px black;
+	.title {
+		position: absolute;
+	}
+	.gh_repos_list {
+		padding-top: 1.5em;
 
-			max-height: 100%;
-			list-style: none;
-			text-indent: none;
-			a {
-				color: $primary;
-			}
-			.gh_repos_item {
-				text-overflow: ellipsis;
-				overflow: hidden;
-				white-space: nowrap;
-			}
+		max-height: 100%;
+		list-style: none;
+		text-indent: none;
+		a {
+			color: $primary;
+		}
+		.gh_repos_item {
+			text-overflow: ellipsis;
+			overflow: hidden;
+			white-space: nowrap;
 		}
 	}
 }
@@ -404,6 +402,7 @@ h3 {
 		white-space: nowrap;
 	}
 }
+
 //
 // Post Styling
 //
@@ -432,6 +431,36 @@ h3 {
 		ul {
 			list-style: circle;
 		}
+	}
+}
+
+// Custom Sliding Text
+.customSlidingText {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+	min-height: 9em;
+	h1 {
+		display: none;
+		animation-name: slide;
+		animation-fill-mode: forwards;
+		animtion-timing-function: ease-in-out;
+	}
+}
+@keyframes slide {
+	0% {
+		margin-right: -2000px;
+		margin-left: 0;
+	}
+	10% {
+		margin-right: 0;
+	}
+	90% {
+		margin-left: 0;
+	}
+	100% {
+		margin-left: -2000px;
 	}
 }
 

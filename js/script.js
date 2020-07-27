@@ -1,3 +1,32 @@
+let customSlidingText = (intervalLength) => {
+	console.log("custom text");
+	let titles = [...document.querySelectorAll(".customSlidingText h1")];
+	if (titles.length >= 1) {
+		//   Index of slide
+		let index = 0;
+		//     Slide function, uses css animation
+		let slide = (item) => {
+			console.log("sliding");
+			item.style.display = "block";
+			item.style.animationDuration = `${intervalLength}ms`;
+			item.style.animationName = "slide";
+			// Hide frame
+			setTimeout(() => (item.style.display = "none"), intervalLength);
+		};
+		let interval = setInterval(() => {
+			let text = titles[index++];
+			if (text) {
+				slide(text);
+			} else {
+				index = 0;
+				text = titles[index++];
+				slide(text);
+			}
+		}, intervalLength);
+	}
+};
+document.addEventListener("DOMContentLoaded", () => customSlidingText(3000));
+
 let wrapper = document.querySelector("#split-screen-wrapper");
 if (wrapper) {
 	let layers = [...wrapper.querySelectorAll(".layer")];

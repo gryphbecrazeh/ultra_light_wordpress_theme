@@ -23,6 +23,7 @@ $featured_project_1 = get_field('featured_project_1')->ID;
 $featured_project_2 = get_field('featured_project_2')->ID;
 $hero_background_image = get_field('hero_background_image');
 $github_feed = get_field('github_feed');
+$h1_slider_text = get_field('h1_slider_text');
 ?>
 
 <section id="hero" style="background-image:url(<?php echo $hero_background_image ?>)">
@@ -31,14 +32,34 @@ $github_feed = get_field('github_feed');
             <div class="col-md-3"></div>
 
             <div class="col-md-6 title-container">
-                <h1><?php the_title(); ?></h1>
+                <?php
+                if ($h1_slider_text) {
+                ?>
+
+                    <div class="customSlidingText">
+                        <?php
+                        echo $h1_slider_text;
+                        ?>
+                    </div>
+
+                <?php
+                } else {
+                ?>
+                    <h1>
+                        <?php
+                        the_title();
+                        ?>
+                    </h1>
+                <?php
+                }
+                ?>
                 <div class="subtitle">
                     <?php echo $title_tags; ?>
                 </div>
 
             </div>
             <div class="col-md-3">
-                <div class="github-container">
+                <div class="github-container d-none d-lg-block">
                     <div class="title">Recent GitHub Activity</div>
                     <?php do_shortcode('[display_gh_repos user="gryphbecrazeh"]') ?>
 
@@ -72,7 +93,7 @@ endif;
 
 ?>
 <section id="projects">
-    <div id="split-screen-wrapper" class="skewed">
+    <div id="split-screen-wrapper" class="skewed d-none d-lg-block">
         <div class="layer top">
             <div class="content-wrap">
                 <div class="content-body">
