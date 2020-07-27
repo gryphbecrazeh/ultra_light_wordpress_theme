@@ -44,9 +44,6 @@ header {
   right: 0;
   z-index: 9999;
 }
-header .navbrand {
-  float: left;
-}
 header .navbrand svg {
   height: 3em;
   opacity: 0.3;
@@ -55,8 +52,13 @@ header .navbrand svg {
 header .navbrand svg:hover {
   opacity: 1;
 }
-header #menu-primary-nav {
-  float: right;
+@media all and (min-width: 992px) {
+  header .navbrand {
+    float: left;
+  }
+  header #menu-primary-nav {
+    float: right;
+  }
 }
 
 footer {

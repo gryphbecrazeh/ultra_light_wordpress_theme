@@ -57,7 +57,6 @@ header {
 	right: 0;
 	z-index: 9999;
 	.navbrand {
-		float: left;
 		svg {
 			height: 3em;
 			opacity: 0.3;
@@ -67,8 +66,14 @@ header {
 			}
 		}
 	}
-	#menu-primary-nav {
-		float: right;
+
+	@media all and (min-width: 992px) {
+		.navbrand {
+			float: left;
+		}
+		#menu-primary-nav {
+			float: right;
+		}
 	}
 }
 // Footer
