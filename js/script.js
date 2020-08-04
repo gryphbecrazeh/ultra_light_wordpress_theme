@@ -1,15 +1,27 @@
+const header = document.querySelector("header");
+let prevScrollPos = 0;
+
+document.addEventListener("scroll", () => {
+	let { classList } = header;
+	let currentPosition = window.scrollY;
+	if (currentPosition < prevScrollPos || currentPosition === 0)
+		header.classList.remove("hidden");
+	if (currentPosition > prevScrollPos && !classList.contains("hidden"))
+		header.classList.add("hidden");
+	return (prevScrollPos = currentPosition);
+});
+
 let customSlidingText = (intervalLength) => {
-	console.log("custom text");
 	let titles = [...document.querySelectorAll(".customSlidingText h1")];
 	if (titles.length >= 1) {
 		//   Index of slide
 		let index = 0;
 		//     Slide function, uses css animation
 		let slide = (item) => {
-			console.log("sliding");
 			item.style.display = "block";
 			item.style.animationDuration = `${intervalLength}ms`;
 			item.style.animationName = "slide";
+
 			// Hide frame
 			setTimeout(() => (item.style.display = "none"), intervalLength);
 		};
@@ -23,6 +35,7 @@ let customSlidingText = (intervalLength) => {
 				slide(text);
 			}
 		}, intervalLength);
+		slide(titles[index++]);
 	}
 };
 document.addEventListener("DOMContentLoaded", () => customSlidingText(3000));

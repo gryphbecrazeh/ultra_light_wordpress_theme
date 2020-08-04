@@ -55,6 +55,10 @@ header {
 	left: 0;
 	right: 0;
 	z-index: 9999;
+	transition: top 500ms cubic-bezier(0.6, -0.15, 0.58, 1.15);
+	&.hidden {
+		top: -1000px;
+	}
 	.navbrand {
 		svg {
 			height: 3em;
@@ -63,6 +67,17 @@ header {
 			&:hover {
 				opacity: 1;
 			}
+		}
+	}
+	.navbar {
+		&::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: -70px;
+			right: -70px;
+			z-index: -1;
+			box-shadow: 50px 0 50px 30px black;
 		}
 	}
 	#menu-primary-nav {
@@ -85,7 +100,6 @@ section {
 	font-family: "Special Elite";
 	letter-spacing: 2px;
 	line-height: 2;
-	box-shadow: 10px 0 10px black;
 
 	p {
 		text-indent: 2em;
@@ -406,6 +420,15 @@ h3 {
 //
 // Post Styling
 //
+section.archive {
+	display: grid;
+	grid-gap: 3em;
+	grid-template-columns: repeat(auto-fit, minmax(30ch, 40vw));
+	justify-content: center;
+	.archive-card {
+	}
+}
+
 #post-title {
 	background-color: $primary;
 	.heading-hilight {
