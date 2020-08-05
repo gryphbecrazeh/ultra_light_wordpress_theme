@@ -1,15 +1,17 @@
-const header = document.querySelector("header");
-let prevScrollPos = 0;
+const semiPresentNavBar = () => {
+	const header = document.querySelector("header");
+	let prevScrollPos = 0;
 
-document.addEventListener("scroll", () => {
-	let { classList } = header;
-	let currentPosition = window.scrollY;
-	if (currentPosition < prevScrollPos || currentPosition === 0)
-		header.classList.remove("hidden");
-	if (currentPosition > prevScrollPos && !classList.contains("hidden"))
-		header.classList.add("hidden");
-	return (prevScrollPos = currentPosition);
-});
+	document.addEventListener("scroll", () => {
+		let { classList } = header;
+		let currentPosition = window.scrollY;
+		if (currentPosition < prevScrollPos || currentPosition === 0)
+			header.classList.remove("hidden");
+		if (currentPosition > prevScrollPos && !classList.contains("hidden"))
+			header.classList.add("hidden");
+		return (prevScrollPos = currentPosition);
+	});
+};
 
 let customSlidingText = (intervalLength) => {
 	let titles = [...document.querySelectorAll(".customSlidingText h1")];
@@ -38,90 +40,123 @@ let customSlidingText = (intervalLength) => {
 		slide(titles[index++]);
 	}
 };
-document.addEventListener("DOMContentLoaded", () => customSlidingText(3000));
+let initializeSplitscreenFeaturedProjects = () => {
+	let wrapper = document.querySelector("#split-screen-wrapper");
+	if (wrapper) {
+		let layers = [...wrapper.querySelectorAll(".layer")];
+		let topLayer = wrapper.querySelector(".skewed .top");
+		let forms = [...wrapper.querySelectorAll("form")];
 
-let wrapper = document.querySelector("#split-screen-wrapper");
-if (wrapper) {
-	let layers = [...wrapper.querySelectorAll(".layer")];
-	let topLayer = wrapper.querySelector(".skewed .top");
-	let forms = [...wrapper.querySelectorAll("form")];
+		layers.forEach((layer, index) => {
+			// Identify which of the layers to manipulate
+			let next = index > 0 ? 0 : 1;
 
-	layers.forEach((layer, index) => {
-		// Identify which of the layers to manipulate
-		let next = index > 0 ? 0 : 1;
+			let contentBody = layers[next].querySelector(".content-body");
+			let heading = layer.querySelector(".heading");
+			let content = layer.querySelector(".content");
+			// let layerForm = layer.querySelector("form");
+			// let title = layer.querySelector(".title");
+			// let underline = title.querySelector(".underline");
 
-		let contentBody = layers[next].querySelector(".content-body");
-		let heading = layer.querySelector(".heading");
-		let content = layer.querySelector(".content");
-		// let layerForm = layer.querySelector("form");
-		// let title = layer.querySelector(".title");
-		// let underline = title.querySelector(".underline");
+			layer.addEventListener("mouseenter", (e) => {
+				let top = [...e.target.classList].includes("top");
+				// underline.style.width = "100%";
+				// Make the opposite side's opacity 0
+				contentBody.style.opacity = 0;
+				// layerForm.style.opacity = 1;
+				if (top) {
+					// If the item selected is the top layer grow it
+					return (topLayer.style.width = "85vw");
+				}
+				// If the item selected is not the top layer shrink it
 
-		layer.addEventListener("mouseenter", (e) => {
-			let top = [...e.target.classList].includes("top");
-			// underline.style.width = "100%";
-			// Make the opposite side's opacity 0
-			contentBody.style.opacity = 0;
-			// layerForm.style.opacity = 1;
-			if (top) {
-				// If the item selected is the top layer grow it
-				return (topLayer.style.width = "85vw");
-			}
-			// If the item selected is not the top layer shrink it
-
-			return (topLayer.style.width = "15vw ");
-		});
-
-		layer.addEventListener("mouseleave", () => {
-			// underline.style.width = "0";
-			topLayer.style.width = "50vw";
-
-			//     Set all layers' content-body to 100% opacity as a cover all solution to the mouse leaving
-			layers.forEach(() => {
-				contentBody.style.opacity = 1;
+				return (topLayer.style.width = "15vw ");
 			});
-			// forms.forEach((form) => {
-			// 	form.style.opacity = 0;
-			// });
+
+			layer.addEventListener("mouseleave", () => {
+				// underline.style.width = "0";
+				topLayer.style.width = "50vw";
+
+				//     Set all layers' content-body to 100% opacity as a cover all solution to the mouse leaving
+				layers.forEach(() => {
+					contentBody.style.opacity = 1;
+				});
+				// forms.forEach((form) => {
+				// 	form.style.opacity = 0;
+				// });
+			});
 		});
-	});
-}
-// Hilight Links
-let delay = 1000;
-let hilight = (item) => {
-	item.classList.add("hilight");
-	setTimeout(() => item.classList.remove("hilight"), delay);
+	}
 };
-let techNodeArray = [...document.querySelectorAll(".tech")];
+// Interval to highlight the featured technologies on the homepage
+let techHighlighter = (
+	delay = 1000,
+	containerIdentifier = ".tech-container"
+) => {
+	let container = document.querySelector(containerIdentifier);
+	// Hilight Links
+	let hilight = (item) => {
+		item.classList.add("hilight");
+		setTimeout(() => item.classList.remove("hilight"), delay);
+	};
+	let techNodeArray = [...container.querySelectorAll(".tech")];
 
-if (techNodeArray.length > 1) {
-	let index = 0;
-	let maxIndex = techNodeArray.length;
+	if (techNodeArray.length > 1) {
+		let index = 0;
+		let maxIndex = techNodeArray.length;
+		let interval = setInterval(() => {
+			if (index >= maxIndex) {
+				index = 0;
+			}
+			return hilight(techNodeArray[`${index++}`]);
+		}, delay);
+	}
+};
+// Highlight half of the text in the heading by modifying the innerHTML
+let styleHeadingTags = () => {
+	// Hilight text
+	let htags = [
+		...document.querySelectorAll("h1"),
+		...document.querySelectorAll("h2"),
+		...document.querySelectorAll("h3"),
+		...document.querySelectorAll("h4"),
+		...document.querySelectorAll("h5"),
+		...document.querySelectorAll("h6"),
+	];
 
-	let interval = setInterval(() => {
-		if (index > maxIndex) {
-			index = 0;
-		}
-		hilight(techNodeArray[`${index++}`]);
-	}, delay);
-}
-// Hilight text
-let htags = [
-	...document.querySelectorAll("h1"),
-	...document.querySelectorAll("h2"),
-	...document.querySelectorAll("h3"),
-	...document.querySelectorAll("h4"),
-	...document.querySelectorAll("h5"),
-	...document.querySelectorAll("h6"),
-];
-
-htags.forEach((item) => {
-	let words = [...item.innerText.match(/\w+/gim)];
-	let res = words.map((word, index) => {
-		if (index >= words.length / 2) {
-			return `<span class='heading-hilight'>${word}</span>`;
-		}
-		return word;
-	});
-	item.innerHTML = res.join(" ");
+	if (htags.length >= 1) {
+		htags.forEach((item) => {
+			let words = [...item.innerText.match(/\w+/gim)];
+			let res = words.map((word, index) => {
+				if (index >= words.length / 2) {
+					return `<span class='heading-hilight'>${word}</span>`;
+				}
+				return word;
+			});
+			item.innerHTML = res.join(" ");
+		});
+	}
+};
+let mouseHoverElement = (dims = 80, containerIdentifier = "body") => {
+	let mouseHoverElement = document.createElement("div");
+	let container = document.querySelector(containerIdentifier);
+	mouseHoverElement.id = "mouseHoverElement";
+	mouseHoverElement.style.width = `${dims}px`;
+	mouseHoverElement.style.height = `${dims}px`;
+	container.appendChild(mouseHoverElement);
+	let placeBox = (e) => {
+		let center = dims / 2;
+		mouseHoverElement.style.top = `${e.y - center}px`;
+		mouseHoverElement.style.left = `${e.x - center}px`;
+	};
+	document.addEventListener("mousemove", (e) => placeBox(e));
+};
+// Execute Scripts
+document.addEventListener("DOMContentLoaded", () => {
+	mouseHoverElement(80);
+	styleHeadingTags();
+	customSlidingText(3000);
+	techHighlighter(1000);
+	initializeSplitscreenFeaturedProjects();
+	semiPresentNavBar();
 });

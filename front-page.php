@@ -29,9 +29,9 @@ $h1_slider_text = get_field('h1_slider_text');
 <section id="hero" style="background-image:url(<?php echo $hero_background_image ?>)">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-3"></div>
+            <div class="d-none d-lg-block col-xl-3"></div>
 
-            <div class="col-md-6 title-container">
+            <div class="col-12 col-md-6 title-container">
                 <?php
                 if ($h1_slider_text) {
                 ?>
@@ -53,13 +53,13 @@ $h1_slider_text = get_field('h1_slider_text');
                 <?php
                 }
                 ?>
-                <div class="subtitle">
+                <div class="subtitle tech-container">
                     <?php echo $title_tags; ?>
                 </div>
 
             </div>
-            <div class="col-md-3">
-                <div class="github-container d-none d-lg-block">
+            <div class="d-none d-md-block col-md-6 col-xl-3">
+                <div class="github-container">
                     <div class="title">Recent GitHub Activity</div>
                     <?php do_shortcode('[display_gh_repos user="gryphbecrazeh"]') ?>
 

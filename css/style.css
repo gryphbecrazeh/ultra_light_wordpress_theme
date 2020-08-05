@@ -107,28 +107,36 @@ h3 {
 }
 
 .github-container {
-  display: none;
-}
-
-.github-container {
+  position: relative;
   display: block;
   border-radius: 5px;
-  min-height: 80vh;
   max-height: 80vh;
   background-color: rgba(0, 0, 0, 0.7);
   padding: 0.5em;
   padding-left: 1em;
-  overflow: auto;
-  scrollbar-color: orange transparent !important;
-  scrollbar-width: thin;
   box-shadow: 0 10px 10px black;
+  overflow: hidden;
 }
 .github-container .title {
   position: absolute;
+  top: 0.5em;
+  z-index: 2;
+}
+.github-container .title::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -70px;
+  right: -70px;
+  z-index: -1;
+  box-shadow: 50px 0 50px 30px black;
 }
 .github-container .gh_repos_list {
   padding-top: 1.5em;
-  max-height: 100%;
+  overflow: auto;
+  scrollbar-color: orange transparent !important;
+  scrollbar-width: thin;
+  height: 100%;
   list-style: none;
   text-indent: none;
 }
@@ -243,10 +251,8 @@ h3 {
   transition: all 200ms ease-in-out;
 }
 #split-screen-wrapper .layer .content-wrap .content-body .content {
-  overflow: hidden;
-  max-height: 0;
+  position: absolute;
   transition: all 200ms ease-in-out;
-  transition-delay: 200ms;
 }
 #split-screen-wrapper .layer .content-wrap .content-body .content .card h5 {
   text-align: center;
@@ -261,9 +267,29 @@ h3 {
 #split-screen-wrapper .layer .content-wrap .content-body .content .card .tech {
   max-width: 18ch;
 }
-#split-screen-wrapper .layer:hover .content {
-  max-height: 100% !important;
-  transition-delay: 0ms;
+#split-screen-wrapper .layer.top .heading {
+  opacity: 1;
+}
+#split-screen-wrapper .layer.top .content {
+  margin-left: -10000px;
+}
+#split-screen-wrapper .layer.top:hover .heading {
+  opacity: 0;
+}
+#split-screen-wrapper .layer.top:hover .content {
+  margin-left: 0;
+}
+#split-screen-wrapper .layer.bottom .heading {
+  opacity: 1;
+}
+#split-screen-wrapper .layer.bottom .content {
+  margin-right: -10000px;
+}
+#split-screen-wrapper .layer.bottom:hover .heading {
+  opacity: 0;
+}
+#split-screen-wrapper .layer.bottom:hover .content {
+  margin-right: 0;
 }
 #split-screen-wrapper .skewed .top {
   transform: skew(-130deg);
@@ -377,6 +403,16 @@ h3 {
   animation-timing-function: ease-in-out;
   animation-direction: alternate;
   white-space: nowrap;
+}
+
+#mouseHoverElement {
+  position: fixed;
+  background-color: white;
+  opacity: 1;
+  mix-blend-mode: overlay;
+  clip-path: polygon(0% 50%, 25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%);
+  z-index: 9999999999;
+  pointer-events: none;
 }
 
 section.archive {
