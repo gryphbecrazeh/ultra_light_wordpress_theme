@@ -139,6 +139,7 @@ let styleHeadingTags = () => {
 };
 let mouseHoverElement = (dims = 80, containerIdentifier = "body") => {
 	let mouseHoverElement = document.createElement("div");
+	// currently isn't limited because it is position fixed, and the e.y and e.x only goes by the window position
 	let container = document.querySelector(containerIdentifier);
 	mouseHoverElement.id = "mouseHoverElement";
 	mouseHoverElement.style.width = `${dims}px`;
@@ -153,7 +154,7 @@ let mouseHoverElement = (dims = 80, containerIdentifier = "body") => {
 };
 // Execute Scripts
 document.addEventListener("DOMContentLoaded", () => {
-	mouseHoverElement(80);
+	mouseHoverElement(80, "#introduction");
 	styleHeadingTags();
 	customSlidingText(3000);
 	techHighlighter(1000);

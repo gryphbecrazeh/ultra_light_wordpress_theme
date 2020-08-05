@@ -68,6 +68,13 @@ header .navbar::before {
 header #menu-primary-nav {
   margin-left: auto;
 }
+@media all and (max-width: 992px) {
+  header #navbarSupportedContent {
+    background-color: #333;
+    padding: 1em;
+    border-radius: 0 10px 10px 10px;
+  }
+}
 
 footer {
   min-height: 10em;

@@ -33,8 +33,8 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id='navbarSupportedContent'>
-                <div class="navbrand">
-                    <a href="/">
+                <div class="d-none d-lg-block navbrand">
+                    <a class="" href="/">
                         <?php echo file_get_contents(__DIR__ . '/assets/chrisWebsiteLogo-W.svg') ?>
                     </a>
                 </div>
