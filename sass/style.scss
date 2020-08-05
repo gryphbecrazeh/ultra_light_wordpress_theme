@@ -282,6 +282,7 @@ h3 {
 					position: absolute;
 					transition: all 200ms ease-in-out;
 					.card {
+						box-shadow: 0 5px 5px black;
 						h5 {
 							text-align: center;
 							font-family: $font-oswald;

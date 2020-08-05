@@ -261,6 +261,9 @@ h3 {
   position: absolute;
   transition: all 200ms ease-in-out;
 }
+#split-screen-wrapper .layer .content-wrap .content-body .content .card {
+  box-shadow: 0 5px 5px black;
+}
 #split-screen-wrapper .layer .content-wrap .content-body .content .card h5 {
   text-align: center;
   font-family: "Oswald", sans-serif;
