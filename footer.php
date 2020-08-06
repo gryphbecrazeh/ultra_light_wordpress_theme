@@ -8,7 +8,7 @@
             )
         );
         ?>
-
+        <div class='footer-center'>Custom Theme Developed by Christopher Cordine</div>
     </div>
 </footer>
 
