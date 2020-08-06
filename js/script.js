@@ -152,9 +152,47 @@ let mouseHoverElement = (dims = 80, containerIdentifier = "body") => {
 	};
 	document.addEventListener("mousemove", (e) => placeBox(e));
 };
+// Scrolls github repo container
+const idleScroller = (
+	pace = 2000,
+	containerIdentifier = ".scroll-container",
+	pixelInterval = 10
+) => {
+	let container = document.querySelector(containerIdentifier);
+	let maxHeight = container.scrollTopMax;
+	let avgScrollDistance = maxHeight / pixelInterval;
+	let scrollIntervalPace = pace;
+	let scrollInterval, scrollTimeout;
+
+	let scroller = () => {
+		let { scrollTop } = container;
+		let scrollDistance =
+			scrollTop + avgScrollDistance <= maxHeight
+				? scrollTop + avgScrollDistance
+				: 0;
+		return container.scroll({
+			top: scrollDistance,
+			behavior: "smooth",
+		});
+	};
+
+	let assignScrollInterval = () => {
+		scrollInterval = setInterval(scroller, scrollIntervalPace);
+	};
+
+	container.addEventListener("scroll", () => {
+		clearTimeout(scrollTimeout);
+		clearInterval(scrollInterval);
+		scrollTimeout = setTimeout(assignScrollInterval, scrollIntervalPace);
+	});
+	assignScrollInterval();
+};
 // Execute Scripts
 document.addEventListener("DOMContentLoaded", () => {
-	mouseHoverElement(80, "#introduction");
+	if (window.innerWidth > 800) {
+		mouseHoverElement(80, "#introduction");
+		idleScroller(1200, ".gh_repos_list", 2);
+	}
 	styleHeadingTags();
 	customSlidingText(3000);
 	techHighlighter(1000);
