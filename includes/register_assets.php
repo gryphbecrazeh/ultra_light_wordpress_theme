@@ -2,7 +2,9 @@
 // Register Front End Assets
 function load_stylesheets()
 {
-    wp_register_style('stylesheet', get_template_directory_uri() . '/css/style.css', array(), false, 'all');
+    // Disabled caching by adding a random query to every serving
+    $rand = rand(1,99999999);
+    wp_register_style('stylesheet', get_template_directory_uri() . "/css/style.css?$rand", array(), false, 'all');
     wp_enqueue_style('stylesheet');
 }
 
