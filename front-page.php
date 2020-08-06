@@ -29,7 +29,7 @@ $h1_slider_text = get_field('h1_slider_text');
 <section id="hero" style="background-image:url(<?php echo $hero_background_image ?>)">
     <div class="container-fluid">
         <div class="row">
-            <div class="d-none d-lg-block col-xl-3"></div>
+            <div class="d-none d-xl-block col-xl-3"></div>
 
             <div class="col-12 col-md-6 title-container">
                 <?php

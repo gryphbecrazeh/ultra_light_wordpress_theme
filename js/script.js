@@ -94,22 +94,24 @@ let techHighlighter = (
 	containerIdentifier = ".tech-container"
 ) => {
 	let container = document.querySelector(containerIdentifier);
-	// Hilight Links
-	let hilight = (item) => {
-		item.classList.add("hilight");
-		setTimeout(() => item.classList.remove("hilight"), delay);
-	};
-	let techNodeArray = [...container.querySelectorAll(".tech")];
+	if (container) {
+		// Hilight Links
+		let hilight = (item) => {
+			item.classList.add("hilight");
+			setTimeout(() => item.classList.remove("hilight"), delay);
+		};
+		let techNodeArray = [...container.querySelectorAll(".tech")];
 
-	if (techNodeArray.length > 1) {
-		let index = 0;
-		let maxIndex = techNodeArray.length;
-		let interval = setInterval(() => {
-			if (index >= maxIndex) {
-				index = 0;
-			}
-			return hilight(techNodeArray[`${index++}`]);
-		}, delay);
+		if (techNodeArray.length > 1) {
+			let index = 0;
+			let maxIndex = techNodeArray.length;
+			let interval = setInterval(() => {
+				if (index >= maxIndex) {
+					index = 0;
+				}
+				return hilight(techNodeArray[`${index++}`]);
+			}, delay);
+		}
 	}
 };
 // Highlight half of the text in the heading by modifying the innerHTML
@@ -159,38 +161,40 @@ const idleScroller = (
 	pixelInterval = 10
 ) => {
 	let container = document.querySelector(containerIdentifier);
-	let maxHeight = container.scrollTopMax;
-	let avgScrollDistance = maxHeight / pixelInterval;
-	let scrollIntervalPace = pace;
-	let scrollInterval, scrollTimeout;
+	if (container) {
+		let maxHeight = container.scrollTopMax;
+		let avgScrollDistance = maxHeight / pixelInterval;
+		let scrollIntervalPace = pace;
+		let scrollInterval, scrollTimeout;
 
-	let scroller = () => {
-		let { scrollTop } = container;
-		let scrollDistance =
-			scrollTop + avgScrollDistance <= maxHeight
-				? scrollTop + avgScrollDistance
-				: 0;
-		return container.scroll({
-			top: scrollDistance,
-			behavior: "smooth",
+		let scroller = () => {
+			let { scrollTop } = container;
+			let scrollDistance =
+				scrollTop + avgScrollDistance <= maxHeight
+					? scrollTop + avgScrollDistance
+					: 0;
+			return container.scroll({
+				top: scrollDistance,
+				behavior: "smooth",
+			});
+		};
+
+		let assignScrollInterval = () => {
+			scrollInterval = setInterval(scroller, scrollIntervalPace);
+		};
+
+		container.addEventListener("scroll", () => {
+			clearTimeout(scrollTimeout);
+			clearInterval(scrollInterval);
+			scrollTimeout = setTimeout(assignScrollInterval, scrollIntervalPace);
 		});
-	};
-
-	let assignScrollInterval = () => {
-		scrollInterval = setInterval(scroller, scrollIntervalPace);
-	};
-
-	container.addEventListener("scroll", () => {
-		clearTimeout(scrollTimeout);
-		clearInterval(scrollInterval);
-		scrollTimeout = setTimeout(assignScrollInterval, scrollIntervalPace);
-	});
-	assignScrollInterval();
+		assignScrollInterval();
+	}
 };
 // Execute Scripts
 document.addEventListener("DOMContentLoaded", () => {
 	if (window.innerWidth > 800) {
-		mouseHoverElement(80, "#introduction");
+		// mouseHoverElement(80, "#introduction");
 		idleScroller(1200, ".gh_repos_list", 2);
 	}
 	styleHeadingTags();

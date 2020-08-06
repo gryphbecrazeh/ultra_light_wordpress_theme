@@ -83,11 +83,27 @@ header {
 	#menu-primary-nav {
 		margin-left: auto;
 	}
+	.dropdown-menu.show {
+		background-color: black;
+		a {
+			color: orange;
+		}
+		.dropdown-item:hover {
+			background-color: #333;
+		}
+	}
+
 	@media all and (max-width: 992px) {
 		#navbarSupportedContent {
-			background-color: #333;
+			background-color: #fda300;
 			padding: 1em;
 			border-radius: 0 10px 10px 10px;
+			position: absolute;
+			top: 50px;
+		}
+
+		.navbar-dark .navbar-nav .nav-link {
+			color: black;
 		}
 	}
 }
@@ -174,7 +190,7 @@ h3 {
 		}
 	}
 }
-// Hero
+// HERO SECTION
 #hero {
 	min-height: 100vh;
 	display: flex;
@@ -209,7 +225,7 @@ h3 {
 		}
 	}
 }
-
+// INTRODUCTION SECTION
 #introduction {
 	position: relative;
 	background-color: $background;
@@ -225,12 +241,13 @@ h3 {
 	}
 }
 
+// PROJECTS SECTION
 #projects {
 	background-color: $secondary;
 	padding: 0;
 }
 
-// Split screen
+// START SPLIT SCREEN
 #split-screen-wrapper {
 	position: relative;
 	overflow: hidden;
@@ -461,6 +478,8 @@ h3 {
 		white-space: nowrap;
 	}
 }
+// END OF SPLIT SCREEN
+
 #mouseHoverElement {
 	position: fixed;
 	background-color: white;
@@ -480,12 +499,23 @@ h3 {
 //
 // Post Styling
 //
+section.title {
+	background-color: #111;
+}
 section.archive {
-	display: grid;
-	grid-gap: 3em;
-	grid-template-columns: repeat(auto-fit, minmax(30ch, 40vw));
-	justify-content: center;
+	// display: grid;
+	// grid-gap: 3em;
+	// grid-template-columns: repeat(auto-fit, minmax(30ch, 40vw));
+	// justify-content: center;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 2em;
+	& > * {
+		flex-basis: calc(calc(1000px - 100%) * 999);
+		flex-grow: 1;
+	}
 	.archive-card {
+		flex-basis: 600px;
 	}
 }
 

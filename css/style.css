@@ -68,11 +68,25 @@ header .navbar::before {
 header #menu-primary-nav {
   margin-left: auto;
 }
+header .dropdown-menu.show {
+  background-color: black;
+}
+header .dropdown-menu.show a {
+  color: orange;
+}
+header .dropdown-menu.show .dropdown-item:hover {
+  background-color: #333;
+}
 @media all and (max-width: 992px) {
   header #navbarSupportedContent {
-    background-color: #333;
+    background-color: #fda300;
     padding: 1em;
     border-radius: 0 10px 10px 10px;
+    position: absolute;
+    top: 50px;
+  }
+  header .navbar-dark .navbar-nav .nav-link {
+    color: black;
   }
 }
 
@@ -425,12 +439,23 @@ h3 {
   pointer-events: none;
 }
 
-section.archive {
-  display: grid;
-  grid-gap: 3em;
-  grid-template-columns: repeat(auto-fit, minmax(30ch, 40vw));
-  justify-content: center;
+section.title {
+  background-color: #111;
 }
+
+section.archive {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+}
+section.archive > * {
+  flex-basis: calc(calc(1000px - 100%) * 999);
+  flex-grow: 1;
+}
+section.archive .archive-card {
+  flex-basis: 600px;
+}
+
 #post-title {
   background-color: orange;
 }
